@@ -22,4 +22,6 @@ fn main() {
     else if game.get_player() == 2 && game.get_cause_of_end() != 1 {
         println!("Second player won!");
     }
+
+    let exit = Input::input_i8();
 }
