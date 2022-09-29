@@ -23,5 +23,6 @@ fn main() {
         println!("Second player won!");
     }
 
-    let exit = Input::input_i8();
+    let exit = Input::input_usize();
+    print!("{}", exit);
 }
