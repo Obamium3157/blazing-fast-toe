@@ -4,25 +4,29 @@ use game::input::Input;
 use game::Game;
 
 fn main() {
-    let mut game = Game::new();
-    game.paint(5, 5);
+    let mut stop = String::from("n");
 
-    while game.get_in_game() {
-        let c = Input::input_usize();
-        let r = Input::input_usize();
-        game.turn(c, r);
-    }
+    while stop != "y" {
+        let mut game = Game::new();
+        game.paint(5, 5);
 
-    if game.get_cause_of_end() == 1 {
-        println!("Draw!");
-    }
-    else if game.get_player() == 1 && game.get_cause_of_end() != 1 {
-        println!("First player won!");
-    }
-    else if game.get_player() == 2 && game.get_cause_of_end() != 1 {
-        println!("Second player won!");
-    }
+        while game.get_in_game() {
+            let c = Input::input_usize();
+            let r = Input::input_usize();
+            game.turn(c, r);
+        }
 
-    let exit = Input::input_usize();
-    print!("{}", exit);
+        if game.get_cause_of_end() == 1 {
+            println!("Draw!");
+        }
+        else if game.get_player() == 1 && game.get_cause_of_end() != 1 {
+            println!("First player won!");
+        }
+        else if game.get_player() == 2 && game.get_cause_of_end() != 1 {
+            println!("Second player won!");
+        }
+
+        println!("Want to exit? y/n");
+        stop = Input::input_string();
+    }
 }

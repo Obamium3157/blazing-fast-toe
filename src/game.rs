@@ -17,6 +17,17 @@ pub mod input {
 
             input
         }
+
+        pub fn input_string() -> String {
+            let mut input = String::new();
+            io::stdin()
+                .read_line(&mut input)
+                .expect("Failed to read line");
+
+            let input = String::from(input.trim());
+
+            input
+        }
     }
 }
 
