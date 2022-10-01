@@ -5,17 +5,18 @@ pub mod input {
 
     impl Input {
         pub fn input_usize() -> usize {
-            let mut input = String::new();
-            io::stdin()
-                .read_line(&mut input)
-                .expect("Failed to read line");
+            loop {
+                let mut input = String::new();
+                io::stdin()
+                    .read_line(&mut input)
+                    .expect("Failed to read line");
 
-            let input: usize = match input.trim().parse() {
-                Ok(a) => a,
-                Err(_) => panic!("Failed converting String -> usize"),
-            };
-
-            input
+                let input: usize = match input.trim().parse() {
+                    Ok(a) => a,
+                    Err(_) => continue,
+                };
+                return input;
+            }
         }
 
         pub fn input_string() -> String {
